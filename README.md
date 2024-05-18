@@ -3,6 +3,7 @@
 
 ## Initial Setup
 1. Clone repository to "<path>/XAMPP/htdocs"  
+    cd into the directory with `cd "<path>/XAMPP/htdocs"` *NOTE: REPLACE <path> with your path!   
     `git clone https://github.com/hansintheair/BattleshipWeb.git`  
     You should have "<path>/XAMPP/htdocs/Battleship" when done cloning.
 2. Open Netbeans
