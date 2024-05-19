@@ -25,7 +25,7 @@
 18. Complete the steps in the Run section to test that everything is set up correctly
 
 ## Run
-1. Start XAMPP Apache server
+1. Start XAMPP Apache & MySQL servers
 2. In Netbeans, right-click the index.html file and select "run"  
     The start page to the Battleship project should open on your browser.  
     You should NOT see a 404 error.
