@@ -17,7 +17,7 @@
             <form action="LoginHandler.php" method="post">
                 E-mail: <input type="email" name="email" required><br>
                 Password: <input type="password" name="password" required><br>
-                <input type="submit">
+                <input type="submit" value="Log in">
                 <span id="error"><?php echo isset($_SESSION['login_error']) ? $_SESSION['login_error'] : "";?></span>
             </form>
         </div>

@@ -17,7 +17,7 @@
             <form action="CreateAccountHandler.php" method="post">
                 E-mail: <input type="email" name="email" required><br>
                 Password: <input type="password" name="password" required><br>
-                <input type="submit">
+                <input type="submit" value="Register">
                 <span id="error"><?php echo isset($_SESSION['register_error']) ? $_SESSION['register_error'] : "";?></span>
             </form>
         </div>
