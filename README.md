@@ -20,12 +20,12 @@
 13. On the New Project Wizard -> Run Configuration page
   14. Confirm Run As is set to "Local Web Site (running on local web server)
   15. Confirm Project URL is set to "http://localhost/BattleshipWeb/battleship/"
-  16. Index File is set to "index.html"
+  16. Index File is set to "Home.php"
   17. Click Finish
 18. Complete the steps in the Run section to test that everything is set up correctly
 
 ## Run
 1. Start XAMPP Apache & MySQL servers
-2. In Netbeans, right-click the index.html file and select "run"  
+2. In Netbeans, right-click the Home.php file and select "run"  
     The start page to the Battleship project should open on your browser.  
     You should NOT see a 404 error.
