@@ -44,19 +44,19 @@ class BattleshipsDB {
     }
     
     function checkUserExists($email) {
-        $query = "SELECT * FROM ".$this->db_name.".`entity_users` AS `entity_users` WHERE `email` = '".$email."'";
+        $query = "SELECT * FROM `".$this->db_name."`.`entity_users` AS `entity_users` WHERE `email` = '".$email."'";
 
         return (bool)$this->db->query($query)->fetch_assoc();
     }
     
     function getUser($email) {
-        $query = "SELECT `id_user` AS `USER_UID`, `email` AS `EMAIL`, `password` AS `PASSWORD` FROM ".$this->db_name.".`entity_users` AS `entity_users` WHERE `email` = '".$email."'";
+        $query = "SELECT `id_user` AS `USER_UID`, `email` AS `EMAIL`, `password` AS `PASSWORD` FROM `".$this->db_name."`.`entity_users` AS `entity_users` WHERE `email` = '".$email."'";
     
         return $this->db->query($query)->fetch_assoc();
     }
     
     function addUser($email, $password) {
-        $query = "INSERT INTO ".$this->db_name.".`entity_users` (`email`, `password`) VALUES ('".$email."', '".$password."')";
+        $query = "INSERT INTO `".$this->db_name."`.`entity_users` (`email`, `password`) VALUES ('".$email."', '".$password."')";
         
         $this->db->query($query);
     }
