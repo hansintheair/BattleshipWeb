@@ -27,7 +27,8 @@
 20. On the left sidebar, under the "Administration" tab, select "Data Import/Restore"
 21. On the localhost Data Import page, select the "Import from Self-Contained File" radio button and set the file path to "<path>/XAMPP/htdocs/BatteshipWeb/battleship/database/Battleships.sql"
 22. Click Start Import
-23. Complete the steps in the Run section to test that everything is set up correctly
+23. Refresh the Schemas on the left side and confirm that a schema called 'battleship' was created.
+24. Complete the steps in the Run section to test that everything is set up correctly
 
 ## Run
 1. Start XAMPP Apache & MySQL servers
