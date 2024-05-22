@@ -44,7 +44,11 @@ $store_db->connect();
 $store_db->addUser($email, $password_hashed);
 $store_db->disconnect();
 
+// Clear error messages upon successful registration
+unset($_SESSION['register_error']);
+
 $_SESSION["register_success"] = true;
 header("Location: CreateAccount.php");
 
+?>
  
