@@ -86,9 +86,9 @@ CREATE TABLE `entity_users` (
   `middle_name` varchar(50) DEFAULT NULL,
   `last_name` varchar(50) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
-  `password` varchar(16) DEFAULT NULL,
+  `password` varchar(60) DEFAULT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -97,7 +97,7 @@ CREATE TABLE `entity_users` (
 
 LOCK TABLES `entity_users` WRITE;
 /*!40000 ALTER TABLE `entity_users` DISABLE KEYS */;
-INSERT INTO `entity_users` VALUES (1,'hansintheair','Hannes','M.','Ziegler','hansintheair@email.com','hanssafepwd#1'),(2,'mathewnex12','Mathew',NULL,NULL,'mathew@email.com','mathsafepws#1'),(3,NULL,NULL,NULL,NULL,'anthonyb@whatever.com','$2y$10$gfu55oHnA');
+INSERT INTO `entity_users` VALUES (1,'hansintheair','Hannes','M.','Ziegler','hansintheair@email.com','hanssafepwd#1'),(2,'mathewnex12','Mathew',NULL,NULL,'mathew@email.com','mathsafepws#1'),(3,NULL,NULL,NULL,NULL,'anthonyb@whatever.com','$2y$10$gfu55oHnA'),(4,NULL,NULL,NULL,NULL,'anthonyb@gmail.com','$2y$10$m2JxRNV.v'),(5,NULL,NULL,NULL,NULL,'anthony123@whatever.com','$2y$10$TsT4AdnO8'),(6,NULL,NULL,NULL,NULL,'anthony1234@whatever.com','$2y$10$IroyvDBwZ');
 /*!40000 ALTER TABLE `entity_users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -160,4 +160,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-20 12:44:58
+-- Dump completed on 2024-05-22  1:23:23
