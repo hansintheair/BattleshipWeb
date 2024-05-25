@@ -1,15 +1,15 @@
 CREATE DATABASE  IF NOT EXISTS `battleship` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
 USE `battleship`;
--- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
+-- MariaDB dump 10.19  Distrib 10.4.32-MariaDB, for Win64 (AMD64)
 --
 -- Host: 127.0.0.1    Database: battleship
 -- ------------------------------------------------------
--- Server version	5.5.5-10.4.32-MariaDB
+-- Server version	10.4.32-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!50503 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -23,7 +23,7 @@ USE `battleship`;
 
 DROP TABLE IF EXISTS `entity_games`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `entity_games` (
   `id_game` mediumint(7) NOT NULL,
   PRIMARY KEY (`id_game`)
@@ -46,7 +46,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `entity_players`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `entity_players` (
   `id_player` mediumint(7) NOT NULL,
   `board_ships` varchar(2000) DEFAULT NULL,
@@ -78,17 +78,13 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `entity_users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `entity_users` (
   `id_user` mediumint(7) NOT NULL AUTO_INCREMENT,
-  `username` varchar(50) DEFAULT NULL,
-  `first_name` varchar(50) DEFAULT NULL,
-  `middle_name` varchar(50) DEFAULT NULL,
-  `last_name` varchar(50) DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
-  `password` varchar(60) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -97,7 +93,7 @@ CREATE TABLE `entity_users` (
 
 LOCK TABLES `entity_users` WRITE;
 /*!40000 ALTER TABLE `entity_users` DISABLE KEYS */;
-INSERT INTO `entity_users` VALUES (1,'hansintheair','Hannes','M.','Ziegler','hansintheair@email.com','hanssafepwd#1'),(2,'mathewnex12','Mathew',NULL,NULL,'mathew@email.com','mathsafepws#1'),(3,NULL,NULL,NULL,NULL,'anthonyb@whatever.com','$2y$10$gfu55oHnA'),(4,NULL,NULL,NULL,NULL,'anthonyb@gmail.com','$2y$10$m2JxRNV.v'),(5,NULL,NULL,NULL,NULL,'anthony123@whatever.com','$2y$10$TsT4AdnO8'),(6,NULL,NULL,NULL,NULL,'anthony1234@whatever.com','$2y$10$IroyvDBwZ');
+INSERT INTO `entity_users` VALUES (8,'hansintheair@email.com','$2y$10$1r24aSZp3NgXMbMKAdtEfOYFPbYw.A0wkKHqV6Ac4L/DJYMvUZT3K');
 /*!40000 ALTER TABLE `entity_users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -107,7 +103,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `xref_games_players`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `xref_games_players` (
   `id_game_players` mediumint(7) NOT NULL,
   `id_game` mediumint(7) DEFAULT NULL,
@@ -132,7 +128,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `xref_users_games`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `xref_users_games` (
   `id_user_games` mediumint(7) NOT NULL AUTO_INCREMENT,
   `id_user` mediumint(7) DEFAULT NULL,
@@ -160,4 +156,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-22  1:23:23
+-- Dump completed on 2024-05-24 16:59:19
