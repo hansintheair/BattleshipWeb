@@ -1,15 +1,15 @@
 CREATE DATABASE  IF NOT EXISTS `battleship` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci */;
 USE `battleship`;
--- MariaDB dump 10.19  Distrib 10.4.32-MariaDB, for Win64 (AMD64)
+-- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: battleship
 -- ------------------------------------------------------
--- Server version	10.4.32-MariaDB
+-- Server version	5.5.5-10.4.32-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8 */;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -23,7 +23,7 @@ USE `battleship`;
 
 DROP TABLE IF EXISTS `entity_games`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `entity_games` (
   `id_game` mediumint(7) NOT NULL,
   PRIMARY KEY (`id_game`)
@@ -46,7 +46,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `entity_players`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `entity_players` (
   `id_player` mediumint(7) NOT NULL,
   `board_ships` varchar(2000) DEFAULT NULL,
@@ -78,11 +78,14 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `entity_users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `entity_users` (
   `id_user` mediumint(7) NOT NULL AUTO_INCREMENT,
   `email` varchar(50) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
+  `isAdmin` tinyint(1) DEFAULT NULL,
+  `wins` mediumint(7) DEFAULT NULL,
+  `losses` mediumint(7) DEFAULT NULL,
   PRIMARY KEY (`id_user`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -93,7 +96,7 @@ CREATE TABLE `entity_users` (
 
 LOCK TABLES `entity_users` WRITE;
 /*!40000 ALTER TABLE `entity_users` DISABLE KEYS */;
-INSERT INTO `entity_users` VALUES (8,'hansintheair@email.com','$2y$10$1r24aSZp3NgXMbMKAdtEfOYFPbYw.A0wkKHqV6Ac4L/DJYMvUZT3K');
+INSERT INTO `entity_users` VALUES (8,'hansintheair@email.com','$2y$10$1r24aSZp3NgXMbMKAdtEfOYFPbYw.A0wkKHqV6Ac4L/DJYMvUZT3K',NULL,NULL,NULL);
 /*!40000 ALTER TABLE `entity_users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -103,7 +106,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `xref_games_players`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `xref_games_players` (
   `id_game_players` mediumint(7) NOT NULL,
   `id_game` mediumint(7) DEFAULT NULL,
@@ -128,7 +131,7 @@ UNLOCK TABLES;
 
 DROP TABLE IF EXISTS `xref_users_games`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `xref_users_games` (
   `id_user_games` mediumint(7) NOT NULL AUTO_INCREMENT,
   `id_user` mediumint(7) DEFAULT NULL,
@@ -156,4 +159,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-24 16:59:19
+-- Dump completed on 2024-05-24 19:07:41
