@@ -14,6 +14,7 @@ $store_db->connect();
 $current_email = $_SESSION['user_email'];
 $new_email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
 $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+$confirm_password = filter_input(INPUT_POST, 'confirm_password', FILTER_SANITIZE_STRING);
 $action = $_POST['action'] ?? '';
 
 if ($action == 'update') {
@@ -75,18 +76,31 @@ if ($action == 'update') {
 
     $stmt->close();
 } elseif ($action == 'delete') {
-    $query = "DELETE FROM `entity_users` WHERE `email` = ?";
+    // Confirm password
+    $query = "SELECT `password` FROM `entity_users` WHERE `email` = ?";
     $stmt = $store_db->getDb()->prepare($query);
     $stmt->bind_param("s", $current_email);
-
-    if ($stmt->execute()) {
-        $_SESSION['delete_success'] = "Account deleted successfully!";
-        session_destroy();
-    } else {
-        $_SESSION["update_error"] = "Failed to delete account. Please try again.";
-    }
-
+    $stmt->execute();
+    $stmt->bind_result($hashed_password);
+    $stmt->fetch();
     $stmt->close();
+
+    if (password_verify($confirm_password, $hashed_password)) {
+        $query = "DELETE FROM `entity_users` WHERE `email` = ?";
+        $stmt = $store_db->getDb()->prepare($query);
+        $stmt->bind_param("s", $current_email);
+
+        if ($stmt->execute()) {
+            $_SESSION['delete_success'] = "Account deleted successfully!";
+            session_destroy();
+        } else {
+            $_SESSION["update_error"] = "Failed to delete account. Please try again.";
+        }
+
+        $stmt->close();
+    } else {
+        $_SESSION["update_error"] = "Incorrect password. Account not deleted.";
+    }
 }
 
 $store_db->disconnect();

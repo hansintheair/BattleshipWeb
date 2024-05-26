@@ -32,6 +32,10 @@ $store_db->disconnect();
                 window.location.href = 'Home.php';
             }, 3000); // 3000 milliseconds = 3 seconds
         }
+
+        function showDeleteConfirmation() {
+            document.getElementById('delete-confirmation').style.display = 'block';
+        }
     </script>
 </head>
 <body>
@@ -42,10 +46,21 @@ $store_db->disconnect();
         <label for="password">Password (leave blank if not changing):</label>
         <input type="password" id="password" name="password"><br>
         <button type="submit" name="action" value="update">Update</button>
-        <button type="submit" name="action" value="delete">Delete Account</button>
-        <span id="error"><?php echo isset($_SESSION['update_error']) ? $_SESSION['update_error'] : ""; ?></span>
-        <span id="success"><?php echo isset($_SESSION['update_success']) ? $_SESSION['update_success'] : ""; ?></span>
     </form>
+
+    <button onclick="showDeleteConfirmation()">Delete Account</button>
+
+    <div id="delete-confirmation" style="display:none;">
+        <form action="updateAccountHandler.php" method="post">
+            <label for="confirm_password">Confirm Password to Delete:</label>
+            <input type="password" id="confirm_password" name="confirm_password" required><br>
+            <button type="submit" name="action" value="delete">Confirm Delete</button>
+        </form>
+    </div>
+
+
+    <span id="error"><?php echo isset($_SESSION['update_error']) ? $_SESSION['update_error'] : ""; ?></span>
+    <span id="success"><?php echo isset($_SESSION['update_success']) ? $_SESSION['update_success'] : ""; ?></span>
     <button onclick="window.location.href='user.php'">Back to Dashboard</button>
 
     <div id="updated">
