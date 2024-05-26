@@ -32,6 +32,10 @@ if ($exists) {
     header("Location: CreateAccount.php");
     exit;
 }
+// Since email and password are valid and user doesn't exist, set default values
+$wins = 0;
+$losses = 0;
+$isAdmin = false; // By default, users are not admins
 
 // Since email and password are valid and user doesn't exist, set default values
 $wins = 0;

@@ -14,7 +14,6 @@ if (!isset($_SESSION['user_email'])) {
 <head>
     <title>Choose Menu</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="stylesheet" href="css/styles.css">
 
 </head>

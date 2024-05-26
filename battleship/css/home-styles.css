@@ -10,7 +10,6 @@ body {
     height: 100vh;
     margin: 0;
     padding-top: 20px;
-
 }
 .header {
     text-align: center;
@@ -22,7 +21,6 @@ body {
     max-width: 100%;
     height: auto;
 }
-
 h1 {
     color: #4CAF50;
     margin-bottom: 20px;
@@ -53,7 +51,6 @@ h1 {
 .menu-container button:hover {
     background-color: #45a049;
 }
-
 form {
     display: flex;
     flex-direction: column;
@@ -100,4 +97,3 @@ input[type="submit"]:hover {
     color: red;
     margin-top: 10px;
 }
-
