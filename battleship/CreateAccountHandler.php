@@ -9,13 +9,15 @@ $store_db = new BattleshipsDB();
 $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
 $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
 
+$pattern = '/^[^@.]+(?:\.[^@.]+)*@[^@.]+\.[^@.]{2,}(?:\.[^@.]{2,})*$/';
+$passwordpattern = '/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{7,}$/';
+
+if (!preg_match($pattern, $email)) {
 if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $_SESSION["register_error"] = "Invalid email format";
     header("Location: CreateAccount.php");
     exit;
 }
-
-$passwordpattern = '/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d).{7,}$/';
 
 if (!preg_match($passwordpattern, $password)) {
     $_SESSION["register_error"] = "Password must contain at least one lowercase letter, one uppercase letter, and one number.";
@@ -32,7 +34,7 @@ if ($exists) {
     header("Location: CreateAccount.php");
     exit;
 }
-
+}
 // Since email and password are valid and user doesn't exist, set default values
 $wins = 0;
 $losses = 0;
