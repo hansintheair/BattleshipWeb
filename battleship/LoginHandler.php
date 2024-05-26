@@ -22,9 +22,17 @@ if (!($userdata["EMAIL"] == $email && password_verify($password, $userdata["PASS
    exit;
 }
 
-// Login redirect
-$_SESSION["login_error"] = "WOHOO! PASSWORD VERIFIED!";  //DEBUG
-header("Location: Home.php");  //DEBUG
-//header("Location: User.php");  //NOT IMPLEMENTED
+// Check if the user is an administrator
+if ($userdata["IS_ADMIN"]) {
+    // Offer a choice between user and admin menu 
+    $_SESSION["user_email"] = $email; // Store user email in session for further use
+    header("Location: chooseMenu.php"); // Redirect to a page where the user can choose between menus
+} else {
+    // Redirect to user menu if not an admin
+    $_SESSION["user_email"] = $email; // Store user email in session for further use
+    header("Location: User.php");
+}
+exit;
+?>
 
 
