@@ -22,8 +22,8 @@ switch ($action) {
     case 'update_account':
         header('Location: updateAccount.php');
         exit;
-    case 'play_game':
-        header('Location: playGame.php');
+    case 'game_menu':
+        header('Location: GameMenu.php');
         exit;
     default:
         break;
@@ -44,7 +44,7 @@ switch ($action) {
     <p>Select an option:</p>
     <form action="user.php" method="post">
         <button type="submit" name="action" value="account_info"><i class="fas fa-user-circle icon"></i>Account Info</button>
-        <button type="submit" name="action" value="launch_game"><i class="fas fa-gamepad icon"></i>Launch Game</button>
+        <button type="submit" name="action" value="game_menu"><i class="fas fa-gamepad icon"></i>Launch Game</button>
         <button type="submit" name="action" value="update_account"><i class="fas fa-edit icon"></i>Update Account</button>
         <button type="submit" name="action" value="logout"><i class="fas fa-sign-out-alt icon"></i>Logout</button>
     </form>

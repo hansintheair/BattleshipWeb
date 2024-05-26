@@ -6,10 +6,10 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start; /* Align items to the top of the page */
+    justify-content: flex-start;
     height: 100vh;
     margin: 0;
-    padding-top: 20px; /* Add padding to create space at the top */
+    padding-top: 20px;
 }
 .header {
     text-align: center;
@@ -20,6 +20,36 @@ body {
     margin: 0 auto;
     max-width: 100%;
     height: auto;
+}
+h1 {
+    color: #4CAF50;
+    margin-bottom: 20px;
+}
+.menu-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.menu-container button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+}
+.menu-container button:hover {
+    background-color: #45a049;
 }
 form {
     display: flex;
