@@ -14,6 +14,7 @@ $store_db->connect();
 $current_email = $_SESSION['user_email'];
 $new_email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
 $password = filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING);
+
 $action = $_POST['action'] ?? '';
 
 if ($action == 'update') {

@@ -1,6 +1,7 @@
 <?php
 session_start();
 
+
 $action = $_POST['action'] ?? '';
 
 switch ($action) {
@@ -40,6 +41,7 @@ switch ($action) {
 <body>
     <h1>Admin Menu</h1>
     <div class="menu-container">
+
         <form action="Admin.php" method="post">
             <button type="submit" name="action" value="view_users">
                 <i class="fas fa-users"></i> View All Users
@@ -71,6 +73,7 @@ switch ($action) {
 
 
             </button>
+
         </form>
     </div>
 </body>

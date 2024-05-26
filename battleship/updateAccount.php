@@ -33,6 +33,7 @@ $store_db->disconnect();
             }, 3000); // 3000 milliseconds = 3 seconds
         }
     </script>
+
 </head>
 <body>
     <h1>Update Account</h1>
@@ -43,6 +44,7 @@ $store_db->disconnect();
         <input type="password" id="password" name="password"><br>
         <button type="submit" name="action" value="update">Update</button>
         <button type="submit" name="action" value="delete">Delete Account</button>
+
         <span id="error"><?php echo isset($_SESSION['update_error']) ? $_SESSION['update_error'] : ""; ?></span>
         <span id="success"><?php echo isset($_SESSION['update_success']) ? $_SESSION['update_success'] : ""; ?></span>
     </form>

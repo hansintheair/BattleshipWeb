@@ -2,6 +2,7 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
+
     padding: 20px;
     text-align: center;
 }
@@ -31,4 +32,5 @@ button:hover {
 }
 .icon {
     margin-right: 5px; 
+
 }

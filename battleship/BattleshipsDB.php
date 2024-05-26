@@ -66,7 +66,6 @@ class BattleshipsDB {
         $result = $stmt->get_result();
         $user = $result->fetch_assoc();
         $stmt->close();
-
         return $user;
     }
 
@@ -132,3 +131,4 @@ class BattleshipsDB {
     }
 }
 ?>
+
