@@ -16,6 +16,9 @@ switch ($action) {
     case 'modify_user':
         header('Location: modifyUser.php');
         exit;
+    case 'launch_game':
+        header('Location: gameMenu.php');
+        exit;
     case 'logout':
         session_destroy();
         header('Location: Home.php');
@@ -31,27 +34,43 @@ switch ($action) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Menu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/home-styles.css">
 </head>
 <body>
     <h1>Admin Menu</h1>
     <div class="menu-container">
         <form action="Admin.php" method="post">
-            <button type="submit" name="action" value="view_users">View All Users</button>
+            <button type="submit" name="action" value="view_users">
+                <i class="fas fa-users"></i> View All Users
+            </button>
         </form>
         <form action="Admin.php" method="post">
-            <button type="submit" name="action" value="add_user">Add User</button>
+            <button type="submit" name="action" value="add_user">
+                <i class="fas fa-user-plus"></i> Add User
+            </button>
         </form>
         <form action="Admin.php" method="post">
-            <button type="submit" name="action" value="delete_user">Delete User</button>
+            <button type="submit" name="action" value="delete_user">
+                <i class="fas fa-user-minus"></i> Delete User
+            </button>
         </form>
         <form action="Admin.php" method="post">
-            <button type="submit" name="action" value="modify_user">Modify User</button>
+            <button type="submit" name="action" value="modify_user">
+                <i class="fas fa-user-edit"></i> Modify User
+            </button>
         </form>
         <form action="Admin.php" method="post">
-            <button type="submit" name="action" value="logout">Exit Menu</button>
+            <button type="submit" name="action" value="launch_game">
+                <i class="fas fa-gamepad"></i> Launch Game
+            </button>
+        </form>
+        <form action="Admin.php" method="post">
+            <button type="submit" name="action" value="logout">
+                <i class="fas fa-sign-out-alt"></i> Exit Menu
 
 
+            </button>
         </form>
     </div>
 </body>
