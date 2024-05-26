@@ -14,7 +14,9 @@ if (!isset($_SESSION['user_email'])) {
 <head>
     <title>Choose Menu</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/styles.css"> 
+
+    <link rel="stylesheet" href="css/styles.css">
+
 </head>
 <body>
     <h1>Welcome, <?php echo htmlspecialchars($_SESSION['user_email']); ?></h1>
@@ -29,3 +31,4 @@ if (!isset($_SESSION['user_email'])) {
     </div>
 </body>
 </html>
+
