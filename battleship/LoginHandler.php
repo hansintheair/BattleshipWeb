@@ -21,17 +21,10 @@ if (!($userdata["EMAIL"] == $email && password_verify($password, $userdata["PASS
     header("Location: Home.php");
    exit;
 }
+//redirect to user.php - admin display is managed there
+$_SESSION["user_email"] = $email; // Store user email in session for further use
+header("Location: User.php");
 
-// Check if the user is an administrator
-if ($userdata["IS_ADMIN"]) {
-    // Offer a choice between user and admin menu 
-    $_SESSION["user_email"] = $email; // Store user email in session for further use
-    header("Location: chooseMenu.php"); // Redirect to a page where the user can choose between menus
-} else {
-    // Redirect to user menu if not an admin
-    $_SESSION["user_email"] = $email; // Store user email in session for further use
-    header("Location: User.php");
-}
 exit;
 ?>
 

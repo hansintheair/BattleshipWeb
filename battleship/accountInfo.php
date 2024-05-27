@@ -24,13 +24,12 @@ $store_db->disconnect();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Account Info</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/home-styles.css">
 </head>
 <body>
     <h1>Account Info</h1>
     <p>Email: <?php echo htmlspecialchars($userData['EMAIL']); ?></p>
     <p>Wins: <?php echo htmlspecialchars($userData['wins']); ?></p>
     <p>Losses: <?php echo htmlspecialchars($userData['losses']); ?></p>
-    <button onclick="window.location.href='user.php'">Back to Dashboard</button>
 </body>
 </html>

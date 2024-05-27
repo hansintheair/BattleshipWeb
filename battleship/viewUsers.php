@@ -32,8 +32,9 @@ $store_db->disconnect();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Users</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/home-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
     <style>
         table {
             width: 100%;
@@ -55,7 +56,7 @@ $store_db->disconnect();
     </style>
 </head>
 <body>
-    <h1>View All Users</h1>
+    <h1>All Users</h1>
     <?php if (empty($users)): ?>
         <p>No users found.</p>
     <?php else: ?>
@@ -81,8 +82,5 @@ $store_db->disconnect();
             </tbody>
         </table>
     <?php endif; ?>
-    <form action="admin.php" method="post">
-        <button type="submit"><i class="fas fa-arrow-left icon"></i> Back to Admin Menu</button>
-    </form>
 </body>
 </html>

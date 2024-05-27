@@ -25,7 +25,7 @@ $store_db->disconnect();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update Account</title>
-    <link rel="stylesheet" href="css/update-styles.css">
+    <link rel="stylesheet" href="css/home-styles.css">
     <script>
         function redirectToHome() {
             setTimeout(function() {
@@ -47,11 +47,12 @@ $store_db->disconnect();
         <input type="password" id="password" name="password"><br>
         <button type="submit" name="action" value="update">Update</button>
     </form>
-
+    <br>
     <button onclick="showDeleteConfirmation()">Delete Account</button>
 
     <div id="delete-confirmation" style="display:none;">
         <form action="updateAccountHandler.php" method="post">
+            <br>
             <label for="confirm_password">Confirm Password to Delete:</label>
             <input type="password" id="confirm_password" name="confirm_password" required><br>
             <button type="submit" name="action" value="delete">Confirm Delete</button>
@@ -61,7 +62,7 @@ $store_db->disconnect();
 
     <span id="error"><?php echo isset($_SESSION['update_error']) ? $_SESSION['update_error'] : ""; ?></span>
     <span id="success"><?php echo isset($_SESSION['update_success']) ? $_SESSION['update_success'] : ""; ?></span>
-    <button onclick="window.location.href='user.php'">Back to Dashboard</button>
+   
 
     <div id="updated">
         <?php
