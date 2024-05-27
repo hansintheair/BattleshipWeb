@@ -14,7 +14,7 @@ body {
     width: 100%;
     text-align: center;
     position: relative;
-    padding-bottom: 100px;
+    padding-bottom: 5%;
 }
 
 .top-space {
@@ -44,7 +44,7 @@ body {
 
 .logo {
     position: absolute;
-    top: 20%;
+    top: 10%;
     left: 50%;
     transform: translateX(-50%);
     width: 50%;
