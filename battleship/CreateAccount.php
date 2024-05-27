@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Your Battleships Account</title>
-    <link rel="stylesheet" href="css/create-styles.css">
+    <link rel="stylesheet" href="css/home-styles.css">
     <script>
         // JavaScript to redirect after 3 seconds
         function redirectToLogin() {
@@ -19,6 +19,15 @@
     </script>
 </head>
 <body>
+    <div class="header">
+        <div class="top-space"></div>
+        <div class="waves-container">
+            <div id="waves-wrapper">
+                <img src="images/waves.gif" alt="Waves" class="waves">
+            </div>
+        </div>
+        <img src="images/logo.png" alt="Battleship Logo" class="logo">
+    </div>
     <h1>Create Your Battleships Account</h1>
 
     <div class="form-container">
@@ -43,5 +52,6 @@
         }
         ?>
     </div>
+    <script src="js/tile-waves.js"></script>
 </body>
 </html>

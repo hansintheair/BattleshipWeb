@@ -16,19 +16,19 @@ class BattleshipsDB {
             $this->db_name
         );
 
-        echo "Connecting to ".$this->db_name."... ";
+    //    echo "Connecting to ".$this->db_name."... ";
 
         // Check connection
         if ($this->db->connect_error) {
             die("Connection failed<br>".$this->db->connect_error);
         }
 
-        echo "Succeeded<br>";
+    //    echo "Succeeded<br>";
     }
 
     function disconnect() {
 
-        echo "Disconnecting from ".$this->db_name."... ";
+    //    echo "Disconnecting from ".$this->db_name."... ";
 
         if (!$this->db) {
             echo "Nothing to disconnect.<br>";
@@ -36,7 +36,7 @@ class BattleshipsDB {
         }
 
         if ($this->db->close()) {
-            echo "Succeeded<br>";
+    //        echo "Succeeded<br>";
         }
         else {
             echo "Failed<br>";

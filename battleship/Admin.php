@@ -60,18 +60,6 @@ switch ($action) {
                 <i class="fas fa-user-edit"></i> Modify User
             </button>
         </form>
-        <form action="Admin.php" method="post">
-            <button type="submit" name="action" value="launch_game">
-                <i class="fas fa-gamepad"></i> Launch Game
-            </button>
-        </form>
-        <form action="Admin.php" method="post">
-            <button type="submit" name="action" value="logout">
-                <i class="fas fa-sign-out-alt"></i> Exit Menu
-
-
-            </button>
-        </form>
     </div>
 </body>
 </html>

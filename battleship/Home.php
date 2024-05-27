@@ -12,7 +12,13 @@
 </head>
 <body>
     <div class="header">
-        <img src="images/battleship-logo.jpg" alt="Battleship Game Logo" class="logo"> <br><br><br>
+        <div class="top-space"></div>
+        <div class="waves-container">
+            <div id="waves-wrapper">
+                <img src="images/waves.gif" alt="Waves" class="waves">
+            </div>
+        </div>
+        <img src="images/logo.png" alt="Battleship Logo" class="logo">
     </div>
 
     <form action="LoginHandler.php" method="post">
@@ -33,5 +39,6 @@
         session_unset();
         session_destroy();
     ?>
+    <script src="js/tile-waves.js"></script>
 </body>
 </html>

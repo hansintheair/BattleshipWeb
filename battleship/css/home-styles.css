@@ -1,7 +1,6 @@
-
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
+    background-color: #52A3CC;
     color: #333;
     display: flex;
     flex-direction: column;
@@ -9,22 +8,55 @@ body {
     justify-content: flex-start;
     height: 100vh;
     margin: 0;
-    padding-top: 20px;
 }
+
 .header {
+    width: 100%;
     text-align: center;
-    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 100px;
 }
+
+.top-space {
+    background-color: #ACE5D4;
+    height: 50px;
+    width: 100%;
+}
+
+.waves-container {
+    height: 100px;
+    width: 100%;
+    background-color: #52A3CC;
+    position: relative;
+    overflow: hidden;
+}
+
+#waves-wrapper {
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+
+.waves {
+    height: 100%;
+    flex-shrink: 0;
+}
+
 .logo {
-    display: block;
-    margin: 0 auto;
-    max-width: 100%;
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%;
+    min-width: 700px;
     height: auto;
 }
+
 h1 {
-    color: #4CAF50;
+    color: #fffff;
     margin-bottom: 20px;
 }
+
 .menu-container {
     background: #fff;
     padding: 20px;
@@ -35,6 +67,7 @@ h1 {
     flex-direction: column;
     gap: 10px;
 }
+
 .menu-container button {
     background-color: #4CAF50;
     color: white;
@@ -46,25 +79,29 @@ h1 {
     display: flex;
     align-items: center;
     gap: 10px;
-
 }
+
 .menu-container button:hover {
     background-color: #45a049;
 }
+
 form {
     display: flex;
     flex-direction: column;
     gap: 10px;
     width: 300px;
 }
+
 label {
     margin-bottom: 5px;
 }
+
 input[type="email"], input[type="password"] {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
 input[type="submit"] {
     background-color: #4CAF50;
     color: white;
@@ -73,15 +110,19 @@ input[type="submit"] {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
 }
+
 input[type="submit"]:hover {
     background-color: #45a049;
 }
+
 .create-account {
     text-align: center;
     margin-top: 20px;
 }
-.create-account button {
+
+button {
     background-color: #4CAF50;
     color: white;
     padding: 10px;
@@ -89,11 +130,63 @@ input[type="submit"]:hover {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
 }
-.create-account button:hover {
+
+button:hover {
     background-color: #45a049;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
 }
+
 #error {
     color: red;
     margin-top: 10px;
+}
+
+#userForm {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 50%;
+}
+
+#userForm button {
+    flex: 1;
+}
+
+iframe {
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+    height: 75%;
+}
+
+table {
+    width: 95% !important;
+    border-collapse: collapse;
+    background-color: #ACE5D4;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    border: none !important;
+}
+
+th {
+    background-color: #4CAF50 !important;
+    color: black;
+    text-align: center !important;
+    border: none !important;
+    border-top: none !important; 
+}
+
+tr {
+    border-top: 1px solid #52A3CC !important; 
+}
+
+td {
+    padding: 8px;
+    text-align: left !important;
+    border: none !important;
+}
+
+#menu-container {
+    background-color: none !important; 
 }
