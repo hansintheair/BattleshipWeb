@@ -19,8 +19,6 @@ session_start();
             <button type="submit" name="action" value="delete_campaign">Delete Campaign</button>
         </form>
         <span id="error"><?php echo isset($_SESSION['game_error']) ? $_SESSION['game_error'] : "";?></span>
-
-
     </div>
 </body>
-</html>0
+</html>
