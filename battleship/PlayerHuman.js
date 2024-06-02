@@ -1,5 +1,5 @@
 
-class Player {
+class PlayerHuman {
     constructor() {
         
         this.board_size = 10;
@@ -9,10 +9,10 @@ class Player {
         }
         
         // Not implemented/used yet
-        /*this.shots = [];
+        this.shots = [];
         for (let i = 0; i < this.board_size; i++) {
-            this.shots[i] = new Array(this.board_size).fill("-");
-        }*/
+            this.shots[i] = new Array(this.board_size).fill("");
+        }
         
         // Reflects no ship selected once loaded
         this.selectedShip = null;

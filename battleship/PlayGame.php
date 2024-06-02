@@ -75,8 +75,8 @@
             display: none; /* Initially hidden until all ships placed */
         }
     </style>
-    <script type="text/javascript" src="Game.js"></script>
-    <script type="text/javascript" src="Player.js"></script>
+<!--    <script type="text/javascript" src="Game.js"></script>-->
+    <script type="text/javascript" src="PlayerHuman.js"></script>
 </head>
 <body>
     <h1>Place your ships!</h1>
@@ -102,7 +102,7 @@
     
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            p1 = new Player();
+            p1 = new PlayerHuman();
             const shipsContainer = document.getElementById("board-ships");
             p1.displayShips(shipsContainer);
             p1.selectShip();
