@@ -271,10 +271,7 @@ class Player {
         const cell = document.querySelector(`#board-ships table tr:nth-child(${row + 1}) td:nth-child(${col + 1})`);
         // Gets the size and position of the cell
         const cellRect = cell.getBoundingClientRect();
-        // Get scroll position or uses top/left default (if no scroll)
-        const scrollTop = window.scrollY || document.documentElement.scrollTop;
-        const scrollLeft = window.scrollX || document.documentElement.scrollLeft;
-
+        const boardRect = document.getElementById('board-ships').getBoundingClientRect();
         const shipOverlay = document.getElementById("ship-overlay");
         // New image to separate it from the images used for ship selection
         const shipImage = new Image();
@@ -287,17 +284,17 @@ class Player {
             if (orientation === "Vertical") {
                 shipImage.style.width = `${cellRect.width}px`;
                 shipImage.style.height = `${cellRect.height * length}px`;
-                shipImage.style.top = `${cellRect.top + scrollTop}px`;
-                shipImage.style.left = `${cellRect.left + scrollLeft}px`;
-                shipImage.style.transform = "rotate(0deg)";
+                shipImage.style.top = `${cellRect.top - boardRect.top + window.scrollY}px`;
+                shipImage.style.left = `${cellRect.left - boardRect.left + window.scrollX}px`;
+                shipImage.style.transform = "none";
             } else {
                 // Use cell height for width after rotation
                 shipImage.style.width = `${cellRect.height}px`;
                  // Use cell width times length for height after rotation
                 shipImage.style.height = `${cellRect.width * length}px`;
                  // Adjust top position since it is rotated
-                shipImage.style.top = `${cellRect.top + scrollTop + cellRect.height}px`;
-                shipImage.style.left = `${cellRect.left + scrollLeft}px`;
+                shipImage.style.top = `${cellRect.top - boardRect.top + window.scrollY + cellRect.height}px`;
+                shipImage.style.left = `${cellRect.left - boardRect.left + window.scrollX}px`;
                 shipImage.style.transform = "rotate(-90deg)";
                 // Adjust origin to rotate correctly
                 shipImage.style.transformOrigin = `top left`;
