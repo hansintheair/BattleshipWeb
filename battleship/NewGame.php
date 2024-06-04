@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/game-style.css">
     <script type="text/javascript" src="Game.js"></script>
     <script type="text/javascript" src="Player.js"></script>
+    <script type="text/javascript" src="CookieIO.js"></script>
 </head>
 <body>
     
@@ -57,6 +58,11 @@
             });
             
             document.getElementById("confirm-button").addEventListener("click", () => {
+                
+                setCookie("p1", p1);
+                console.log(getCookie("p1"));  //DEBUG
+                console.log(JSON.stringify(getCookie("p1")));  //DEBUG
+            
                 alert("Ships confirmed (put a cool message here)");
             });
         });
