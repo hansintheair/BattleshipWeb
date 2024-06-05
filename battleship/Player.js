@@ -332,14 +332,19 @@ class Player {
     toJSON() {
         return JSON.stringify(
             {
-            "board-ships": this.ships,
-            "board-shots": this.shots
+            "ships": this.ships,
+            "shots": this.shots,
+            "placedShips": this.placedShips
             }
         );
     }
     
+  
     fromJSON(json) {
-        //NOT IMPLEMENTED
+        const data = JSON.parse(json);
+        this.ships = data.ships;
+        this.shots = data.shots;
+        this.placedShips = data.placedShips;        
     }
     
 }

@@ -2,8 +2,8 @@
 
 function setCookie(key, obj, expiry=null, paths=null) {
     
-    console.log("IN setCookie");  //DEBUG
-    console.log(obj.toJSON());  //DEBUG
+//    console.log("IN setCookie");  //DEBUG
+//    console.log("SAVING (RAW): " + obj.toJSON());  //DEBUG
     
     const value = encodeURIComponent(obj.toJSON());
 
@@ -13,9 +13,9 @@ function setCookie(key, obj, expiry=null, paths=null) {
     
 function getCookie(key) {
     
-    console.log("IN getCookie");  //DEBUG
+//    console.log("IN getCookie");  //DEBUG
     const pattern = new RegExp("(?:^| )" + key + "=([^;]*);");
     const result = document.cookie.match(pattern);
-    console.log(result);
+//    console.log("LOADED (RAW): " + result);  //DEBUG
     return result ? decodeURIComponent(result[1]) : null;
 }    
