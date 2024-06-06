@@ -58,11 +58,11 @@
             });
             
             document.getElementById("confirm-button").addEventListener("click", () => {
-                
-            // Save player state for current session
-            setCookie("p1", p1);
-            
-            window.location.href = 'playGame.php';
+
+                // Save player state for current session
+                setCookie("p1", p1);
+
+                window.location.href = 'playGame.php';
             });
         });
     </script>
