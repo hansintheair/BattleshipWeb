@@ -42,7 +42,12 @@
             const p1 = new PlayerHuman();
             const p2 = new PlayerComp();
 
+            // Set up p1 (human player)
             p1.fromJSON(getCookie("p1"));
+            p1.updateBoard();
+            p1.renderAllPlacedShips();
+            
+            // Set up p2 (ai player)
             p2.getShipPlacement();
 
             const compBoardContainer = document.getElementById("comp-board-ships");

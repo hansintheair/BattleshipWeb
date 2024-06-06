@@ -345,9 +345,6 @@ class Player {
         this.ships = data.ships;
         this.shots = data.shots;
         this.placedShips = data.placedShips;
-        // refresh board as soon as loaded from JSON
-        this.updateBoard();
-        this.renderAllPlacedShips();
     }
     
 }
