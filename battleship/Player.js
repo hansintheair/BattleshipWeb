@@ -8,7 +8,6 @@ class Player {
             this.ships[i] = new Array(this.board_size).fill("");
         }
         
-        // Not implemented/used yet
         this.shots = [];
         for (let i = 0; i < this.board_size; i++) {
             this.shots[i] = new Array(this.board_size).fill("-");
