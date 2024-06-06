@@ -50,6 +50,8 @@
 
             const compBoardContainer = document.getElementById("comp-board-ships");
             p2.displayShips(compBoardContainer);
+            
+            // game loop
         });
     </script>
 </body>
