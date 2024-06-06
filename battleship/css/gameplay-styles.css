@@ -16,23 +16,21 @@ body {
 }
 
 .left {
-    display: flex;
-    flex-direction: column;
-    width: 30%;
-    text-align: center;
-   
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-
-.right {
-    width: 70%;
+    width: 50%;
     position: relative;
     height: 100vh;
     justify-content: center;
     align-items: center; 
-    padding-right: 10vh;
+    /*padding-right: 10vh;*/
+}
+
+.right {
+    width: 50%;
+    position: relative;
+    height: 100vh;
+    justify-content: center;
+    align-items: center; 
+    /*padding-left: 10vh;*/
 }
 
 #board-container {
@@ -43,7 +41,7 @@ body {
     align-items: center; 
 }
 
-#board-ships {
+#board-ships, #board-shots {
     display: flex;
     justify-content: center;
     align-items: center;

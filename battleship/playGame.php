@@ -15,13 +15,11 @@
 <body>
     <div class="container">
         <div class="left">
-            <h3>Computer's Board</h3>
-            <div id="comp-board-container">
+            <div id="board-shots">
                 <div id="comp-board-ships"></div> <!-- Computer's Placement Table -->
             </div>
         </div>
         <div class="right">
-            <h3>Your Board</h3>
             <div id="board-container">
                 <div id="board-ships"></div> <!-- Player's Placement Table -->
                 <div id="ship-overlay"></div> <!-- Player's Ship image on cells -->
@@ -42,11 +40,18 @@
             const p1 = new PlayerHuman();
             const p2 = new PlayerComp();
 
+            // Set up p1 (human player)
             p1.fromJSON(getCookie("p1"));
+            p1.updateBoard();
+            p1.renderAllPlacedShips();
+            
+            // Set up p2 (ai player)
             p2.getShipPlacement();
 
             const compBoardContainer = document.getElementById("comp-board-ships");
             p2.displayShips(compBoardContainer);
+            
+            // game loop
         });
     </script>
 </body>
