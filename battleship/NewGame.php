@@ -73,10 +73,9 @@
                 
                 
                 
-                
+                window.location.href = 'playGame.php';
                 
             
-                alert("Ships confirmed (put a cool message here)");
             });
         });
     </script>

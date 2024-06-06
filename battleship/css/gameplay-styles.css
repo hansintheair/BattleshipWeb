@@ -1,0 +1,114 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #52A3CC;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    text-align: center;
+   
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.right {
+    width: 70%;
+    position: relative;
+    height: 100vh;
+    justify-content: center;
+    align-items: center; 
+    padding-right: 10vh;
+}
+
+#board-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    justify-content: center;
+    align-items: center; 
+}
+
+#board-ships {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+table {
+    border-collapse: collapse;
+    width: auto;
+    border: 1px solid black;
+    margin: 5vh;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 0;
+    text-align: center;
+    width: 9vh;
+    height: 9vh;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+#ship-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 10;
+}
+
+#ship-overlay img {
+    position: absolute;
+    border: none;
+}
+
+.ship-images {
+    padding-bottom: 5vh;
+}
+
+.ship-image {
+    cursor: pointer;
+    width: 7vh;
+}
+.ship-image[alt="Carrier [5 Squares]"] {
+    height: 35vh;
+}
+
+.ship-image[alt="Battleship [4 Squares]"] {
+    height: 28vh;
+}
+
+.ship-image[alt="Destroyer [3 Squares]"] {
+    height: 21vh;
+}
+
+.ship-image[alt="Submarine [3 Squares]"] {
+    height: 21vh;
+}
+
+.ship-image[alt="Patrol Boat [2 Squares]"] {
+    height: 14vh;
+}
