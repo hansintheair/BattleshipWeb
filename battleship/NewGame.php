@@ -59,23 +59,10 @@
             
             document.getElementById("confirm-button").addEventListener("click", () => {
                 
-                
-                
-                // (TEST CODE CAN DELETE) simulate loading saved player state to a new player instance  
-                //Save current player's state
-                setCookie("p1", p1);
-                //Load state (to new player instance i.e. when we are loading a saved game)
-                let p3 = new Player();
-                p3.fromJSON(getCookie("p1"));
-                console.log("P3");
-                console.log(p3.ships[1]);
-                // ^TEST CODE CAN DELETE^
-                
-                
-                
-                window.location.href = 'playGame.php';
-                
+            // Save player state for current session
+            setCookie("p1", p1);
             
+            window.location.href = 'playGame.php';
             });
         });
     </script>
