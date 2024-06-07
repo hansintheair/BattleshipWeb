@@ -17,11 +17,13 @@ class PlayerHuman extends Player {
         if (result === "hit") {
             cell.style.backgroundImage = "url('images/hit.gif')";
             cell.style.backgroundSize = "100% 100%";
-            cell.style.zIndex = "11";   // I thought changing the z-index would make the gif appear on top of the cell, but it doesn't seem to work
+            cell.style.position = "relative";   // Z-index only works on positioned elements
+            cell.style.zIndex = "1";            // Make the gifs appear on z-index 1, boats on z-index 0
         } else {
             cell.style.backgroundImage = "url('images/miss.gif')";
             cell.style.backgroundSize = "100% 100%";
-            cell.style.zIndex = "11";   // I thought changing the z-index would make the gif appear on top of the cell, but it doesn't seem to work
+            cell.style.position = "relative";   // Z-index only works on positioned elements
+            cell.style.zIndex = "1";            // Make the gifs appear on z-index 1, boats on z-index 0    
         }
         // save after each shot in case of crashes, closed tabs, etc.
         this.saveGameState(opponent);
