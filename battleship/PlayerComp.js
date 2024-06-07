@@ -114,12 +114,18 @@ class PlayerComp extends Player {
 
         if (result === "hit") {
             playerCell.style.backgroundImage = "url('images/hit.gif')";
+            playerCell.style.backgroundSize = "100% 100%";
+            playerCell.style.position = "relative";     // Z-index only works on positioned elements
+            playerCell.style.zIndex = "1";              // Make the gifs appear on z-index 1, boats on z-index 0
             this.shots[row][col] = "H";
             console.log(`Hit at: (${row}, ${col})`);
             this.cardinalSearch(row, col);
             this.randomShot = false; // Switch to targeted shots
         } else {
             playerCell.style.backgroundImage = "url('images/miss.gif')";
+            playerCell.style.backgroundSize = "100% 100%";
+            playerCell.style.position = "relative";     // Z-index only works on positioned elements
+            playerCell.style.zIndex = "1";              // Make the gifs appear on z-index 1, boats on z-index 0
             this.shots[row][col] = "M";
             console.log(`Miss at: (${row}, ${col})`);
             if (this.targetQueue.length === 0 && !this.randomShot) {
