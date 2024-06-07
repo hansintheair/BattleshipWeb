@@ -16,8 +16,12 @@ class PlayerHuman extends Player {
         // add gifs to cell based on result
         if (result === "hit") {
             cell.style.backgroundImage = "url('images/hit.gif')";
+            cell.style.backgroundSize = "100% 100%";
+            cell.style.zIndex = "11";   // I thought changing the z-index would make the gif appear on top of the cell, but it doesn't seem to work
         } else {
             cell.style.backgroundImage = "url('images/miss.gif')";
+            cell.style.backgroundSize = "100% 100%";
+            cell.style.zIndex = "11";   // I thought changing the z-index would make the gif appear on top of the cell, but it doesn't seem to work
         }
         // save after each shot in case of crashes, closed tabs, etc.
         this.saveGameState(opponent);
