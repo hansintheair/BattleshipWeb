@@ -1,64 +1,95 @@
 class PlayerComp extends Player {
     constructor() {
         super();
+        this.randomShot = true;
+        this.targetQueue = [];
+        this.hitDirections = ['right', 'up', 'left', 'down'];
+        this.currentDirectionIndex = 0;
+        this.firstHit = null; // first hit position
     }
 
     // RANDOM AI PLACEMENT
     getShipPlacement() {
-        // gets the keys from shipLengths (see Player.js constructor)
         const shipTypes = Object.keys(this.shipLengths);
-        
+
         shipTypes.forEach(shipType => {
             let placed = false;
-            // place ship until successful
-            while (!placed) {
-                // random direction based on RNG - 50/50
+            let attempts = 0;
+            const maxAttempts = 100;
+
+            while (!placed && attempts < maxAttempts) {
                 const direction = Math.random() < 0.5 ? "Vertical" : "Horizontal";
-                // get random row and column based on ship and direction
                 const { row, col } = this.getRandomCoordinates(shipType, direction);
-                
+
                 if (direction === "Vertical") {
-                    // if location is valid for the ship to be placed vertically
-                    if (this.canPlaceVertical(row, col, this.shipLengths[shipType])) {
-                        // place ship symbol (C = Carrier) on the cells based on ship length
-                        for (let i = 0; i < this.shipLengths[shipType]; i++) {
-                            this.ships[row + i][col] = shipType[0];
-                        }
-                        placed = true;
-                    }
+                    placed = this.placeShipVertical(row, col, shipType);
                 } else {
-                    // same as above but for horizontal placement
-                    if (this.canPlaceHorizontal(row, col, this.shipLengths[shipType])) {
-                        for (let i = 0; i < this.shipLengths[shipType]; i++) {
-                            this.ships[row][col + i] = shipType[0];
-                        }
-                        placed = true;
-                    }
+                    placed = this.placeShipHorizontal(row, col, shipType);
                 }
+
+                attempts++;
             }
-            
-            this.shipPlaced[shipType] = true;
+
+            if (!placed) {
+                console.error(`Failed to place ship: ${shipType}`);
+            } else {
+                console.log(`Successfully placed ship: ${shipType}`);
+            }
+
+            this.shipPlaced[shipType] = placed;
         });
+    }
+    
+    placeShipVertical(row, col, shipType) {
+        const shipLength = this.shipLengths[shipType];
+        if (this.canPlaceVertical(row, col, shipLength)) {
+            for (let i = 0; i < shipLength; i++) {
+                this.ships[row + i][col] = shipType[0];
+            }
+            return true;
+        }
+        return false;
+    }
+
+    placeShipHorizontal(row, col, shipType) {
+        const shipLength = this.shipLengths[shipType];
+        if (this.canPlaceHorizontal(row, col, shipLength)) {
+            for (let i = 0; i < shipLength; i++) {
+                this.ships[row][col + i] = shipType[0];
+            }
+            return true;
+        }
+        return false;
     }
 
     // AI RANDOM FIRE ALGORITHM
     getShot() {
-        let row, col;
-        // loop until ai selects a cell that hasnt been shot at
-        // ("-" in a cell = not shot at -> see shots array in Player.js)
-        do {
-            // RNG row and column based on board size
-            row = Math.floor(Math.random() * this.board_size);
-            col = Math.floor(Math.random() * this.board_size);
-        } while (this.shots[row][col] !== "-");
-        
+        let row;
+        let col;
+
+        if (this.randomShot) {
+            do {
+                row = Math.floor(Math.random() * this.board_size);
+                col = Math.floor(Math.random() * this.board_size);
+            } while (this.shots[row][col] !== "-");
+        } else {
+            const nextTarget = this.targetQueue.shift();
+            if (nextTarget) {
+                row = nextTarget.row;
+                col = nextTarget.col;
+            } else {
+                this.randomShot = true;
+                return this.getShot();
+            }
+        }
+
+        console.log(`AI shooting at: (${row}, ${col})`);
         return { row, col };
     }
 
     getRandomCoordinates(shipType, direction) {
         let maxRow;
         if (direction === "Vertical") {
-            // boundary checking for vertical
             maxRow = this.board_size - this.shipLengths[shipType];
         } else {
             maxRow = this.board_size;
@@ -66,7 +97,6 @@ class PlayerComp extends Player {
 
         let maxCol;
         if (direction === "Horizontal") {
-            // boundary checking for horizontal
             maxCol = this.board_size - this.shipLengths[shipType];
         } else {
             maxCol = this.board_size;
@@ -79,27 +109,89 @@ class PlayerComp extends Player {
 
     handleAIShot(opponent) {
         const { row, col } = this.getShot();
-        // check if hit or miss
         const result = opponent.receiveShot(row, col);
-        // set playerCell = to the actual cell of the table being shot at
         const playerCell = document.querySelector(`#board-ships table tr:nth-child(${row + 1}) td:nth-child(${col + 1})`);
-        
-        // adds the gifs to the cell based on result
+
         if (result === "hit") {
             playerCell.style.backgroundImage = "url('images/hit.gif')";
+            this.shots[row][col] = "H";
+            console.log(`Hit at: (${row}, ${col})`);
+            this.cardinalSearch(row, col);
+            this.randomShot = false; // Switch to targeted shots
         } else {
             playerCell.style.backgroundImage = "url('images/miss.gif')";
+            this.shots[row][col] = "M";
+            console.log(`Miss at: (${row}, ${col})`);
+            if (this.targetQueue.length === 0 && !this.randomShot) {
+                this.switchDirection();
+            }
         }
-        
-        // save after each shot in case of crashes, closed tabs, etc.
+
         this.saveGameState(opponent);
-        // DEBUG
-        console.log('Player health after AI shot:', opponent.shipHealth);
-        // if all player ships sunk, AI wins and game ends
+
         if (opponent.winCondition()) {
             alert("AI wins!");
             opponent.endGame();
         }
+    }
+
+    cardinalSearch(row, col) {
+        if (!this.firstHit) {
+            this.firstHit = { row, col };
+        }
+        console.log(`Searching around: (${row}, ${col})`);
+        this.addTargetsInCurrentDirection(row, col);
+    }
+
+    addTargetsInCurrentDirection(row, col) {
+        let newTargets = [];
+        const direction = this.hitDirections[this.currentDirectionIndex];
+        console.log(`Current direction: ${direction}`);
+
+        switch (direction) {
+            case 'right':
+                newTargets.push({ row: row, col: col + 1 });
+                break;
+            case 'up':
+                newTargets.push({ row: row - 1, col: col });
+                break;
+            case 'left':
+                newTargets.push({ row: row, col: col - 1 });
+                break;
+            case 'down':
+                newTargets.push({ row: row + 1, col: col });
+                break;
+        }
+
+        newTargets.forEach(target => {
+            if (this.isValidCell(target.row, target.col)) {
+                this.targetQueue.push(target);
+                console.log(`Adding target: (${target.row}, ${target.col})`);
+            }
+        });
+
+        if (this.targetQueue.length === 0) {
+            this.switchDirection();
+        }
+    }
+
+    switchDirection() {
+        this.currentDirectionIndex = (this.currentDirectionIndex + 1) % this.hitDirections.length;
+
+        if (this.currentDirectionIndex === 0) {
+            this.randomShot = true;
+            this.firstHit = null;
+            console.log(`Switching back to random shots`);
+        } else {
+            console.log(`Switching direction to: ${this.hitDirections[this.currentDirectionIndex]}`);
+            if (this.firstHit) {
+                this.addTargetsInCurrentDirection(this.firstHit.row, this.firstHit.col);
+            }
+        }
+    } 
+    
+    isValidCell(row, col) {
+        return row >= 0 && row < this.board_size && col >= 0 && col < this.board_size && this.shots[row][col] === "-";
     }
 
     // save everything
