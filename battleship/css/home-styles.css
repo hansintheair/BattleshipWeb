@@ -7,6 +7,7 @@ body {
     align-items: center;
     justify-content: flex-start;
     height: 100vh;
+    width: 100vw;
     margin: 0;
 }
 
@@ -53,7 +54,7 @@ body {
 }
 
 h1 {
-    color: #fffff;
+    color: #ffff;
     margin-bottom: 20px;
 }
 
@@ -155,7 +156,8 @@ button:hover {
 }
 
 iframe {
-    width: 50%;
+    display: flex;
+    width: 90%;
     margin: 0 auto;
     padding: 20px;
     height: 75%;
