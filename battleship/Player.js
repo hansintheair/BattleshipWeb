@@ -38,7 +38,65 @@ class Player {
             "Patrol Boat [2 Squares]": false
         };
         
+        // set ship health based on ship lengths
+        this.shipHealth = {};
+        for (const shipType in this.shipLengths) {
+            this.shipHealth[shipType] = this.shipLengths[shipType];
+        }
+        
         this.placedShips = [];
+    }
+    
+    receiveShot(row, col) {
+        // if cell is not empty
+        if (this.ships[row][col] !== "") {
+            // retrieves ship type (C = Carrier)
+            const shipType = this.getShipType(this.ships[row][col]);
+            // mark coordinate as hit
+            this.shots[row][col] = "H";
+            // decrement ship health
+            this.shipHealth[shipType] -= 1;
+            // DEBUG
+            if (this.shipHealth[shipType] === 0) {
+                console.log(`${shipType} sunk!`);
+            }
+            // if shot is a hit, return hit
+            return "hit";
+        } else {
+            // else, shot missed
+            this.shots[row][col] = "M";
+            return "miss";
+        }
+    }
+    
+    // gets ship symbol (C = Carrier)
+    getShipType(symbol) {
+        // loops through shipLengths keys and compares the first char
+        // lets us determine what ship was hit so we can mod ship hp
+        for (const shipType in this.shipLengths) {
+            if (shipType[0] === symbol) {
+                return shipType;
+            }
+        }
+        return null;
+    }
+    
+    // new displayShips function to remove bugs relating to the event listener in displayShips
+    // the regular displayShips function is crucial for the placement phase of the game
+    displayShipsAI(target) {
+        const table = document.createElement("table");
+        for (let row = 0; row < this.board_size; row++) {
+            const tr = document.createElement("tr");
+            for (let col = 0; col < this.board_size; col++) {
+                const td = document.createElement("td");
+                td.textContent = "";                     // DEBUG - ADD THIS LINE TO HIDE ENEMY SHIPS - SEE playGame.php (67)
+                //td.textContent = this.ships[row][col]; // DEBUG - REMOVE LINE TO HIDE ENEMY SHIPS - SEE playGame.php (67)
+                tr.appendChild(td);
+            }
+            table.appendChild(tr);
+        }
+        target.innerHTML = "";
+        target.appendChild(table);
     }
     
     // Creates table for placement and adds click listeners to each cell
@@ -58,22 +116,6 @@ class Player {
         target.innerHTML = "";
         target.appendChild(table);  // Inject the tabe into the target element
     }
-    
-    // Not implemented/used yet
-    /*displayShots(target) {
-        const table = document.createElement("table");
-        
-        for (let row = 0; row < this.board_size; row++) {
-            const tr = document.createElement("tr");
-            for (let col = 0; col < this.board_size; col++) {
-                const td = document.createElement("td");
-                td.textContent = this.shots[row][col];
-                tr.appendChild(td);
-            }
-            table.appendChild(tr);
-        }
-        target.appendChild(table);  // Inject the tabe into the target element
-    }*/
     
     selectShip() {
         // Store ship images in shipImages
@@ -333,17 +375,22 @@ class Player {
             {
             "ships": this.ships,
             "shots": this.shots,
-            "placedShips": this.placedShips
+            "placedShips": this.placedShips,
+            "shipHealth": this.shipHealth
             }
         );
     }
     
-  
     fromJSON(json) {
         const data = JSON.parse(json);
         this.ships = data.ships;
         this.shots = data.shots;
         this.placedShips = data.placedShips;
+        this.shipHealth = data.shipHealth;
     }
     
+    winCondition() {
+        // checks to see if each health value = 0 - returns true if all are 0
+        return Object.values(this.shipHealth).every(health => health === 0);
+    }
 }
