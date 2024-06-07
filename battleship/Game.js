@@ -7,14 +7,17 @@ class Game {
     
     play() {
         // NOT IMPLEMENTED
+
     }
     
     toJSON() {
         // NOT IMPLEMENTED
+        return JSON.stringify();
     }
     
     fromJSON() {
         // NOT IMPLEMENTED
+        
     }
     
 }
