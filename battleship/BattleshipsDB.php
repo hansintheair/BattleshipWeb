@@ -138,7 +138,11 @@ class BattleshipsDB {
                 `battleship`.`entity_games` AS `entity_games`
             WHERE
                 `entity_games`.`id_game` = '".$id_game."'";
-        $this->db->query($query)->fetch_all(MYSQLI_ASSOC);
+        
+//        error_log("IN getGame");  //DEBUG
+//        error_log("ID_GAME: ".$id_game);  //DEBUG
+//        error_log("QUERY: ".$query);  //DEBUG
+        return $this->db->query($query)->fetch_all(MYSQLI_ASSOC);
     }
     
     function hasGame($id_game) {
