@@ -53,7 +53,7 @@ class Player {
             // retrieves ship type (C = Carrier)
             const shipType = this.getShipType(this.ships[row][col]);
             // mark coordinate as hit
-            this.shots[row][col] = "H";
+        //    this.ships[row][col] = "H";
             // decrement ship health
             this.shipHealth[shipType] -= 1;
             // DEBUG
@@ -64,7 +64,7 @@ class Player {
             return "hit";
         } else {
             // else, shot missed
-            this.shots[row][col] = "M";
+        //    this.ships[row][col] = "M";
             return "miss";
         }
     }
