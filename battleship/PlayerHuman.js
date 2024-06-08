@@ -16,11 +16,13 @@ class PlayerHuman extends Player {
         const result = opponent.receiveShot(row, col);
         // add gifs to cell based on result
         if (result === "hit") {
+            this.shots[row][col] = "H";
             cell.style.backgroundImage = "url('images/hit.gif')";
             cell.style.backgroundSize = "100% 100%";
             cell.style.position = "relative";   // Z-index only works on positioned elements
             cell.style.zIndex = "1";            // Make the gifs appear on z-index 1, boats on z-index 0
         } else {
+            this.shots[row][col] = "M";
             cell.style.backgroundImage = "url('images/miss.gif')";
             cell.style.backgroundSize = "100% 100%";
             cell.style.position = "relative";   // Z-index only works on positioned elements
