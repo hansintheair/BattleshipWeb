@@ -133,7 +133,7 @@ class PlayerComp extends Player {
             }
         }
 
-        this.saveGameState(opponent);
+        saveGameToCookie(this, opponent);
 
         if (opponent.winCondition()) {
             alert("AI wins!");

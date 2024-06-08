@@ -129,6 +129,69 @@ class BattleshipsDB {
         }
         return $users;
     }
+    
+    function getGame($id_game) {
+        $query = "
+            SELECT 
+                `id_game` AS `ID_GAME`, `p1` AS `P1`, `p2` AS `P2`
+            FROM
+                `battleship`.`entity_games` AS `entity_games`
+            WHERE
+                `entity_games`.`id_game` = '".$id_game."'";
+        $this->db->query($query)->fetch_all(MYSQLI_ASSOC);
+    }
+    
+    function hasGame($id_game) {
+        $query = "
+            SELECT 
+                `id_game` AS `ID_GAME`, `p1` AS `P1`, `p2` AS `P2`
+            FROM
+                `battleship`.`entity_games` AS `entity_games`
+            WHERE
+                `entity_games`.`id_game` = '".$id_game."'";
+        return (bool)$this->db->query($query)->fetch_assoc();
+    }
+    
+    function getAllGames() {
+        $query = "
+            SELECT 
+                `id_game` AS `ID_GAME`, `p1` AS `P1`, `p2` AS `P2`
+            FROM
+                `battleship`.`entity_games` AS `entity_games`";
+        $this->db->query($query)->fetch_all(MYSQLI_ASSOC);
+    }
+    
+    function setGame($id_game, $p1, $p2) {
+        $query = "
+            UPDATE 
+            `".$this->db_name."`.`entity_games`
+            SET 
+                `p1` = '".$p1."',
+                `p2` = '".$p2."'
+            WHERE
+                `id_game` = '".$id_game."'";
+        $this->db->query($query);
+    }
+    
+    function addGame($id_game, $p1, $p2) {
+        $query = "
+        INSERT INTO
+            `".$this->db_name."`.`entity_games` (`id_game`, `p1`, `p2`)
+        VALUES
+            ('".$id_game."', '".$p1."', '".$p2."')";
+        $this->db->query($query);
+    }
+    
+    function delGame($id_game) {
+        $query = "
+            DELETE FROM 
+                `".$this->db_name."`.`entity_games`
+            WHERE 
+                `id_game` = '".$id_game."'";
+    //        error_log("QUERY1: ".$query);  //DEBUG
+        $this->db->query($query);
+    }
+    
 }
-?>
+
 

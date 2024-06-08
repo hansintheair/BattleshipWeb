@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/gameplay-styles.css">
+    <script type="text/javascript" src="Game.js"></script>
     <script type="text/javascript" src="Player.js"></script>
     <script type="text/javascript" src="PlayerHuman.js"></script>
     <script type="text/javascript" src="PlayerComp.js"></script>
@@ -42,22 +43,23 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            
+            // Instantiate objects and variables
             const p1 = new PlayerHuman();
             const p2 = new PlayerComp();
             let isPlayerTurn = true; // Track whose turn it is
             
-            // Set up p1 (human player)
-            p1.fromJSON(getCookie("p1"));
+            // Load players
+            loadGameFromCookie(p1, p2);
+            
+            // Set the board
             p1.updateBoard();
             p1.renderAllPlacedShips();
-            
-            // Set up p2 (ai player)
-            p2.getShipPlacement();
 
             const compBoardContainer = document.getElementById("comp-board-ships");
             p2.displayShipsAI(compBoardContainer); // see Player.js (86)
             
-            // game loop
+            // GAME LOOP
             // grabs the ai board cells and throws them into an array
             const compCells = compBoardContainer.getElementsByTagName("td");
             Array.from(compCells).forEach(cell => {
@@ -98,7 +100,7 @@
             
             // save and quit buttons
             document.getElementById("save-game").addEventListener("click", () => {
-                p1.saveGameState(p2);
+                saveGameToDB(p1, p2);
                 alert("Game saved!");
             });
 
