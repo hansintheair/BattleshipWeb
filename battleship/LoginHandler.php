@@ -22,10 +22,10 @@ if (!($userdata["EMAIL"] == $email && password_verify($password, $userdata["PASS
    exit;
 }
 //redirect to user.php - admin display is managed there
-$_SESSION["user_email"] = $email; // Store user email in session for further use
+$_SESSION["user_email"] = $userdata["EMAIL"]; // Store user email in session for further use
+$_SESSION["id_user"] = $userdata["USER_UID"];  // Store user id in session for further use
 header("Location: User.php");
 
 exit;
-?>
 
 

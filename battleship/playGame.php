@@ -100,7 +100,7 @@
             
             // save and quit buttons
             document.getElementById("save-game").addEventListener("click", () => {
-                saveGameToCookie(p1, p2);
+                saveGameToDB(p1, p2);
                 alert("Game saved!");
             });
 
