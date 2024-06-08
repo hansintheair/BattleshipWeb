@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/gameplay-styles.css">
+    <script type="text/javascript" src="Game.js"></script>
     <script type="text/javascript" src="Player.js"></script>
     <script type="text/javascript" src="PlayerHuman.js"></script>
     <script type="text/javascript" src="PlayerComp.js"></script>
@@ -49,8 +50,7 @@
             let isPlayerTurn = true; // Track whose turn it is
             
             // Load players
-            p1.fromJSON(getCookie("p1"));
-            p2.fromJSON(getCookie("p2"));
+            loadGameFromCookie(p1, p2);
             
             // Set the board
             p1.updateBoard();

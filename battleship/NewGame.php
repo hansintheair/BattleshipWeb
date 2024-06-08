@@ -7,6 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/game-style.css">
+    <script type="text/javascript" src="Game.js"></script>
     <script type="text/javascript" src="Player.js"></script>
     <script type="text/javascript" src="PlayerHuman.js"></script>
     <script type="text/javascript" src="PlayerComp.js"></script>
@@ -69,8 +70,7 @@
             document.getElementById("confirm-button").addEventListener("click", () => {
 
                 // Save player state for current session
-                setCookie("p1", p1);
-                setCookie("p2", p2);
+                saveGameToCookie(p1, p2);
 
                 window.location.href = 'playGame.php';
             });
