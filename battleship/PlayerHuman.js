@@ -1,3 +1,4 @@
+
 class PlayerHuman extends Player {
     constructor() {
         super();
@@ -26,7 +27,7 @@ class PlayerHuman extends Player {
             cell.style.zIndex = "1";            // Make the gifs appear on z-index 1, boats on z-index 0    
         }
         // save after each shot in case of crashes, closed tabs, etc.
-        this.saveGameState(opponent);
+        saveGameToCookie(this, opponent);
         // DEBUG
         console.log('Opponent health after shot:', opponent.shipHealth);
         // if all enemy ships sunk, player wins and game ends
@@ -34,12 +35,6 @@ class PlayerHuman extends Player {
             alert("You win!");
             this.endGame();
         }
-    }
-    
-    // save everything
-    saveGameState(opponent) {
-        setCookie("p1", this);
-        setCookie("p2", opponent);
     }
 
     // prevents cells from being shot at after the game ends by removing event listeners
