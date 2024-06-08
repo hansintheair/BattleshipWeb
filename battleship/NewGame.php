@@ -7,8 +7,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/game-style.css">
-    <script type="text/javascript" src="Game.js"></script>
     <script type="text/javascript" src="Player.js"></script>
+    <script type="text/javascript" src="PlayerHuman.js"></script>
+    <script type="text/javascript" src="PlayerComp.js"></script>
     <script type="text/javascript" src="CookieIO.js"></script>
 </head>
 <body>
@@ -38,7 +39,12 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            const p1 = new Player();
+
+            // Instantiate players
+            const p1 = new PlayerHuman();
+            const p2 = new PlayerComp();
+            
+            // Get human player's ship placement
             const shipsContainer = document.getElementById("board-ships");
             p1.displayShips(shipsContainer);
             p1.selectShip();
@@ -57,10 +63,14 @@
                 p1.resetSelectedShip();
             });
             
+            // Get computer player's ship placement
+            p2.getShipPlacement();
+            
             document.getElementById("confirm-button").addEventListener("click", () => {
 
                 // Save player state for current session
                 setCookie("p1", p1);
+                setCookie("p2", p2);
 
                 window.location.href = 'playGame.php';
             });

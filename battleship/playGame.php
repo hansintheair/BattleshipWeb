@@ -42,22 +42,24 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
+            
+            // Instantiate objects and variables
             const p1 = new PlayerHuman();
             const p2 = new PlayerComp();
             let isPlayerTurn = true; // Track whose turn it is
             
-            // Set up p1 (human player)
+            // Load players
             p1.fromJSON(getCookie("p1"));
+            p2.fromJSON(getCookie("p2"));
+            
+            // Set the board
             p1.updateBoard();
             p1.renderAllPlacedShips();
-            
-            // Set up p2 (ai player)
-            p2.getShipPlacement();
 
             const compBoardContainer = document.getElementById("comp-board-ships");
             p2.displayShipsAI(compBoardContainer); // see Player.js (86)
             
-            // game loop
+            // GAME LOOP
             // grabs the ai board cells and throws them into an array
             const compCells = compBoardContainer.getElementsByTagName("td");
             Array.from(compCells).forEach(cell => {
