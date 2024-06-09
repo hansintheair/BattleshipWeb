@@ -2,6 +2,7 @@
 function saveGameToCookie(p1, p2) {
     setCookie("p1", p1);
     setCookie("p2", p2);
+
 }
 
 function loadGameFromCookie(p1, p2) {
@@ -10,16 +11,22 @@ function loadGameFromCookie(p1, p2) {
 }
 
 async function saveGameToDB(p1, p2) {
+    console.log("IN saveGameToDB");
+    const p1_encoded = p1.toJSON();
+    console.log(p1_encoded);
+    const p2_encoded = p2.toJSON(); 
+    console.log(p2_encoded);
+    
     await fetch("SaveGameHandler.php", {
             method: "POST",
             headers: {
-                "Content-Type": "application/x-www-form-urlencoded"
+                "Content-Type": "application/JSON"
             },
-            body: `p1=${encodeURIComponent(p1.toJSON())}&p2=${encodeURIComponent(p2.toJSON())}`
+            body: JSON.stringify({p1: p1_encoded, p2: p2_encoded})
         }
     );
 }
 
-async function loadGameFromDB(p1, p2) {
-    
+async function loadGameFromDB() {
+    return await fetch("LoadGameHandler.php").then(response => response.json());
 }

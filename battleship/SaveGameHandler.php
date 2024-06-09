@@ -7,9 +7,13 @@ include "BattleshipsDB.php";
 
 $id_user = $_SESSION["id_user"];
 
-// Sanitize for security
-$p1 = filter_input(INPUT_POST, 'p1', FILTER_SANITIZE_STRING);
-$p2 = filter_input(INPUT_POST, 'p2', FILTER_SANITIZE_STRING);
+$jsonInput = file_get_contents('php://input');
+$p1 = json_decode($jsonInput, true)['p1'];
+$p2 = json_decode($jsonInput, true)['p2'];
+
+error_log("IN Battleships.php");  //DEBUG
+error_log("P1: ".$p1);  //DEBUG
+error_log("P2: ".$p2);  //DEBUG
 
 function saveUserGame($id_user, $p1, $p2) {
     $battleship_db = new BattleshipsDB();

@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 exit();
                 break;
             case "load_campaign":
-                // Example: header("Location: LoadCampaign.php");
+                header("Location: PlayGame.php");
                 break;
             case "delete_campaign":
                 // Example: header("Location: DeleteCampaign.php");
