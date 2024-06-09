@@ -21,7 +21,6 @@ session_start();
         <form action="GameMenuHandler.php" method="post">
             <button type="submit" name="action" value="new_campaign">New Campaign</button>
             <button id="load-campaign" type="submit" name="action" value="load_campaign">Load Campaign</button>
-            <button type="submit" name="action" value="delete_campaign">Delete Campaign</button>
         </form>
         <span id="error"><?php echo isset($_SESSION['game_error']) ? $_SESSION['game_error'] : "";?></span>
     </div>

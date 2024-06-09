@@ -26,8 +26,8 @@ DROP TABLE IF EXISTS `entity_games`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `entity_games` (
   `id_game` mediumint(7) NOT NULL,
-  `p1` varchar(5000) DEFAULT NULL,
-  `p2` varchar(5000) DEFAULT NULL,
+  `p1` varchar(3000) DEFAULT NULL,
+  `p2` varchar(3000) DEFAULT NULL,
   PRIMARY KEY (`id_game`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -79,4 +79,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-08 16:56:13
+-- Dump completed on 2024-06-08 17:06:10
