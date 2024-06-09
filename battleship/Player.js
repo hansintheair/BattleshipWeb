@@ -77,6 +77,40 @@ class Player {
         return null;
     }
     
+    getShipTypeAt(row, col) {
+        return this.ships[row][col] !== '' ? this.ships[row][col] : null;
+    }
+    
+    getShipCoordinates(shipType) {
+        const coordinates = [];
+        for (let row = 0; row < this.board_size; row++) {
+            for (let col = 0; col < this.board_size; col++) {
+                if (this.ships[row][col] === shipType) {
+                    coordinates.push({ row, col });
+                }
+            }
+        }
+        return coordinates;
+    }
+    
+    winCondition() {
+        return Object.values(this.shipHealth).every(health => health === 0);
+    }
+    
+    endGame() {
+        const compBoardContainer = document.getElementById("comp-board-ships");
+        const compCells = compBoardContainer.getElementsByTagName("td");
+        Array.from(compCells).forEach(cell => {
+            cell.replaceWith(cell.cloneNode(true));
+        });
+
+        const playerBoardContainer = document.getElementById("board-ships");
+        const playerCells = playerBoardContainer.getElementsByTagName("td");
+        Array.from(playerCells).forEach(cell => {
+            cell.replaceWith(cell.cloneNode(true));
+        });
+    }
+    
     // new displayShips function to remove bugs relating to the event listener in displayShips
     // the regular displayShips function is crucial for the placement phase of the game
     displayShipsAI(target) {
