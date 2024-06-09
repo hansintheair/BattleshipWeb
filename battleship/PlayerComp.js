@@ -178,7 +178,7 @@ class PlayerComp extends Player {
         }
 
         console.log('Player health after AI shot:', opponent.shipHealth);
-        saveGameToCookie(this, opponent);
+        saveGameToCookie(opponent, this);
     }
 
     // Checks if all ships of the opponent are sunk
@@ -338,11 +338,5 @@ class PlayerComp extends Player {
     // Checks if a cell is valid and not already hit or missed
     isValidCell(row, col) {
         return row >= 0 && row < this.board_size && col >= 0 && col < this.board_size && this.shots[row][col] === "-";
-    }
-
-    // Saves the game state
-    saveGameState(opponent) {
-        setCookie("p1", opponent);
-        setCookie("p2", this);
     }
 }
