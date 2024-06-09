@@ -21,10 +21,6 @@ function setCookie(key, value, expiry=null, paths=null) {
 
 }
 
-function setCookieFromEncodedJSON(key, value, expiry=null, paths=null) {
-    document.cookie = `${key}=${value}; expires=${expiry}; path=${paths};`;
-}
-
 function getCookie(key) {
     
 //    console.log("IN getCookie");  //DEBUG
@@ -32,4 +28,9 @@ function getCookie(key) {
     const result = document.cookie.match(pattern);
 //    console.log("LOADED (RAW): " + result);  //DEBUG
     return result ? decodeURIComponent(result[1]) : null;
-}    
+}
+
+function delCookies() {
+    setCookie("p1", "", Date.now() -3600);
+    setCookie("p2", "", Date.now() -3600);
+}

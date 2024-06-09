@@ -33,8 +33,6 @@ switch ($action) {
     default:
         break;
 }
-
-
 ?>
 
 <!DOCTYPE html>
@@ -45,6 +43,7 @@ switch ($action) {
     <title>User Dashboard</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="css/home-styles.css">
+    <script type="text/javascript" src="CookieIO.js"></script>
 </head>
 <body>
     <div class="header">
@@ -70,6 +69,7 @@ switch ($action) {
     <script>
     function submitForm(action) {
         if (action === 'logout') {
+            delCookies();
             window.location.href = 'home.php';
         } else {
             document.getElementById('userForm').action = action + '.php';
