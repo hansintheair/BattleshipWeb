@@ -55,9 +55,13 @@
             // Set the board
             p1.updateBoard();
             p1.renderAllPlacedShips();
+            
 
             const compBoardContainer = document.getElementById("comp-board-ships");
             p2.displayShipsAI(compBoardContainer); // see Player.js (86)
+            
+            p1.renderPlayerShots("comp-board-ships"); // Player's shots on computer's board
+            p2.renderPlayerShots("board-ships"); 
             
             // GAME LOOP
             // grabs the ai board cells and throws them into an array
