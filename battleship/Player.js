@@ -388,6 +388,35 @@ class Player {
         });
     }
     
+    //Display all shots
+    renderPlayerShots(targetId) {
+        const shotsOverlay = document.getElementById(targetId);
+
+        // Ensure the target table is available
+        this.displayShips(shotsOverlay);
+
+        // Loop through the shots array and render each shot
+        for (let row = 0; row < this.board_size; row++) {
+            for (let col = 0; col < this.board_size; col++) {
+                const shot = this.shots[row][col];
+                if (shot !== "-") {
+                    this.renderShot(row, col, shot, targetId);
+                }
+            }
+        }
+    }
+
+    renderShot(row, col, result, targetId) {
+        const cell = document.querySelector(`#${targetId} table tr:nth-child(${row + 1}) td:nth-child(${col + 1})`);
+        if (cell) {
+            cell.style.backgroundImage = result === "H" ? "url('images/hit.gif')" : "url('images/miss.gif')";
+            cell.style.backgroundSize = "100% 100%";
+            cell.style.position = "relative"; // Z-index only works on positioned elements
+            cell.style.zIndex = "1"; // Make the gifs appear on z-index 1
+        }
+    }
+
+    
     checkAllShipsPlaced() {
         
         const allPlaced = Object.values(this.shipPlaced).every(placed => placed === true);
